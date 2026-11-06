@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A quién surtimos | Medicalabs</title>
+  <meta name="description" content="Medicalabs surte medicamentos de venta libre de Genomalabs a farmacias, tiendas y negocios locales." />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/logo-icono-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header" id="header">
+    <div class="barra"><p>Venta a negocio · Línea Genomalabs · Medicamentos de venta libre</p></div>
+    <div class="header__inner">
+      <a class="marca" href="index.html">
+        <img class="logo-completo" src="img/logo.png" alt="Medicalabs, distribución farmacéutica. Salud y bienestar, siempre más cerca." />
+        <img class="logo-icono" src="img/logo-icono.png" alt="Medicalabs" />
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Páginas">
+        <a href="a-quien.html" aria-current="page">A quién</a>
+        <a href="surtido.html">Surtido</a>
+        <a href="promociones.html">Promos</a>
+        <a href="reparto.html">Reparto</a>
+        <a href="visita.html">Visita</a>
+        <span class="nav-sesion" id="sesionNav"></span>
+        <a href="pedido.html" class="btn btn--lime btn--sm" id="pedidoBtn">Armar pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="pagina">
+      <p class="kicker">Tres puertas, el mismo surtido</p>
+      <h1>Surtimos a quien ya tiene gente en la puerta.</h1>
+      <p class="lead">No vendemos una caja al paciente. Reponemos el anaquel del negocio que vive de esa venta. La venta al público la hace el mostrador.</p>
+      <div class="pagina__acciones">
+        <a class="btn btn--lime" href="surtido.html">Ver qué entra en la caja <span class="flecha" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="pedido.html">Armar un pedido</a>
+      </div>
+    </section>
+
+    <section class="bloque">
+      <div class="canales">
+        <article class="canal">
+          <img src="img/farmacia-moderna.jpg" alt="Blísteres de medicamentos de mostrador" />
+          <div class="canal__cuerpo">
+            <p class="num">01</p>
+            <h3>Farmacias</h3>
+            <p>Reposición de lo que rota en mostrador. En esta ruta solo entra venta libre, aparte de lo que el médico receta.</p>
+          </div>
+        </article>
+        <article class="canal">
+          <img src="img/abarrotes.jpg" alt="Pasillo de una tienda de autoservicio con anaqueles llenos" />
+          <div class="canal__cuerpo">
+            <p class="num">02</p>
+            <h3>Tiendas</h3>
+            <p>El espacio corto del anaquel. Piezas de venta libre que la gente ya pide cuando pasa por el pasillo.</p>
+          </div>
+        </article>
+        <article class="canal">
+          <img src="img/negocio.jpg" alt="Atención en el mostrador de un negocio local" />
+          <div class="canal__cuerpo">
+            <p class="num">03</p>
+            <h3>Negocios locales</h3>
+            <p>Abarrotes, misceláneas y locales de barrio. Un pedido claro, para no llenar la trastienda de más.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="bloque" id="cuidados">
+      <div class="bloque__cabeza">
+        <p class="kicker">Lo que no se negocia</p>
+        <h2>Cuatro cosas que revisamos antes de soltar la caja.</h2>
+      </div>
+      <div class="cuidados">
+        <article>
+          <img src="img/gripe.jpg" alt="Termómetro sobre tabletas y cápsulas" />
+          <h3>Venta libre</h3>
+          <p>Esta ruta no lleva medicamentos de receta. Si una presentación pide receta, no entra al pedido.</p>
+        </article>
+        <article>
+          <img src="img/capsulas.jpg" alt="Cápsulas y tabletas de varios colores" />
+          <h3>Una sola casa</h3>
+          <p>El surtido es la línea Genomalabs. No revolvemos otras marcas en la misma caja.</p>
+        </article>
+        <article>
+          <img src="img/cajas.jpg" alt="Estantería de bodega con cajas preparadas para surtir" />
+          <h3>Empaque de origen</h3>
+          <p>Caja cerrada, como sale del empaque. Así llega al negocio y así se pone en el anaquel.</p>
+        </article>
+        <article>
+          <img src="img/bodega.jpg" alt="Pasillo largo de almacenaje" />
+          <h3>Caducidad a la vista</h3>
+          <p>El que recibe puede ver lote y fecha. Lo que está corto de fecha no se manda a reponer mostrador.</p>
+        </article>
+      </div>
+      <div class="pagina__acciones">
+        <a class="btn btn--lime" href="reparto.html">Cómo llega el pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <p class="marca marca--clara"><span>Medicalabs</span></p>
+      <p>Distribución de medicamentos de venta libre de la línea Genomalabs a farmacias, tiendas y negocios locales.</p>
+    </div>
+    <nav class="footer__links" aria-label="Mapa del sitio">
+      <a href="index.html">Inicio</a>
+      <a href="a-quien.html">A quién surtimos</a>
+      <a href="surtido.html">Surtido</a>
+      <a href="promociones.html">Promociones</a>
+      <a href="reparto.html">Reparto</a>
+      <a href="visita.html">Visita para registrarte</a>
+      <a href="pedido.html">Armar pedido</a>
+      <a href="entrar.html">Entrar</a>
+    </nav>
+    <p class="legal">Medicalabs no fabrica los medicamentos. Genomalabs es la línea de su titular. No es una consulta médica ni sustituye la lectura del empaque. La venta al público la hace el negocio que recibe el pedido.</p>
+  </footer>
+  <script src="js/sesion.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>

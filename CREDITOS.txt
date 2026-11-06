@@ -1,0 +1,23 @@
+Fotos de ambiente. No son empaques de la línea Genomalabs.
+Las fotos de producto se agregan cuando las entreguen, en img/productos/.
+
+Unsplash (licencia Unsplash):
+- img/cajas.jpg — https://unsplash.com/photos/1586528116311-ad8dd3c8310d
+- img/bodega.jpg — https://unsplash.com/photos/1553413077-190dd305871c
+- img/capsulas.jpg — https://unsplash.com/photos/1471864190281-a93a3070b6de
+- img/abarrotes.jpg — https://unsplash.com/photos/1578916171728-46686eac8d58
+- img/negocio.jpg — https://unsplash.com/photos/1556742049-0cfed4f6a45d
+- img/farmacia-moderna.jpg — https://unsplash.com/photos/1631549916768-4119b2e5f926
+
+Pexels (licencia Pexels):
+- img/farmaceutico.jpg — https://www.pexels.com/photo/5910953/
+- img/reparto.jpg — https://www.pexels.com/photo/4391470/
+- img/gripe.jpg — https://www.pexels.com/photo/139398/
+- img/mostrador.jpg — https://www.pexels.com/photo/12332074/ conversación en el mostrador de una farmacia. No es personal de Medicalabs.
+- img/tienda.jpg — https://www.pexels.com/photo/30848031/ tienda chica. No es un local de la ruta.
+
+img/logo.png es el logo que entregó el negocio. El fondo negro se volvió transparente para usarlo en el encabezado claro.
+img/logo-icono.png es el icono del mismo logo (cruz, pastillas y camioneta). Va en la pestaña del navegador y en el encabezado del celular.
+
+Mapa: Leaflet 1.9.4 (BSD-2-Clause), baldosas © OpenStreetMap.
+La búsqueda del punto usa Nominatim. Si no responde, el clic en el mapa o la dirección escrita siguen sirviendo.

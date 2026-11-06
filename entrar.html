@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrar | Medicalabs</title>
+  <meta name="description" content="Entra a tu cuenta de Medicalabs para ver los pedidos del negocio." />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/logo-icono-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header" id="header">
+    <div class="barra"><p>Venta a negocio · Línea Genomalabs · Medicamentos de venta libre</p></div>
+    <div class="header__inner">
+      <a class="marca" href="index.html">
+        <img class="logo-completo" src="img/logo.png" alt="Medicalabs, distribución farmacéutica. Salud y bienestar, siempre más cerca." />
+        <img class="logo-icono" src="img/logo-icono.png" alt="Medicalabs" />
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Páginas">
+        <a href="a-quien.html">A quién</a>
+        <a href="surtido.html">Surtido</a>
+        <a href="promociones.html">Promos</a>
+        <a href="reparto.html">Reparto</a>
+        <a href="visita.html">Visita</a>
+        <span class="nav-sesion" id="sesionNav"></span>
+        <a href="pedido.html" class="btn btn--lime btn--sm" id="pedidoBtn">Armar pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <main class="auth" id="contenido">
+    <p class="kicker">Cuenta del negocio</p>
+    <h1>Entra para ver lo que ya pediste.</h1>
+    <p class="lead">Si ya te visitaron, entra aquí. La cuenta nueva se abre al agendar la visita o al pedir que te contacten.</p>
+    <div class="pestanas" role="tablist" aria-label="Acceso">
+      <button type="button" id="tabEntrar" role="tab" aria-selected="true" aria-controls="formEntrar">Entrar</button>
+      <button type="button" id="tabRegistro" role="tab" aria-selected="false" aria-controls="formRegistro">Abrir cuenta</button>
+      <button type="button" id="tabOlvido" role="tab" aria-selected="false" aria-controls="formOlvido">Olvidé la contraseña</button>
+    </div>
+    <div class="auth__caja">
+      <form id="formEntrar" novalidate>
+        <div class="campo">
+          <label for="emailEntrar">Correo</label>
+          <input id="emailEntrar" type="email" autocomplete="username" required />
+        </div>
+        <div class="campo">
+          <label for="claveEntrar">Contraseña</label>
+          <input id="claveEntrar" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn--lime btn--block" type="submit">Entrar</button>
+      </form>
+      <div id="formRegistro" hidden>
+        <p>La cuenta del negocio se abre con la visita del prevendedor, o dejando tus datos para que te contacten.</p>
+        <a class="btn btn--lime" href="visita.html">Contactar o agendar <span class="flecha" aria-hidden="true">→</span></a>
+      </div>
+      <form id="formOlvido" hidden novalidate>
+        <div class="campo">
+          <label for="emailOlvido">Correo de la cuenta</label>
+          <input id="emailOlvido" type="email" autocomplete="email" required />
+        </div>
+        <button class="btn btn--lime btn--block" type="submit">Pedir enlace</button>
+      </form>
+      <form id="formNueva" hidden novalidate>
+        <p>Elige una contraseña nueva para esta cuenta.</p>
+        <div class="campo">
+          <label for="claveReset">Contraseña nueva</label>
+          <input id="claveReset" type="password" autocomplete="new-password" minlength="8" required />
+        </div>
+        <button class="btn btn--lime btn--block" type="submit">Guardar contraseña</button>
+      </form>
+      <p class="aviso" id="authAviso" role="status"></p>
+      <ul class="errores" id="authError" hidden tabindex="-1"></ul>
+    </div>
+  </main>
+  <script src="js/sesion.js"></script>
+  <script src="js/entrar.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

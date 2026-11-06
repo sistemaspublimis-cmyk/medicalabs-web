@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel | Medicalabs</title>
+  <meta name="description" content="Pedidos y clientes de la ruta Medicalabs." />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/logo-icono-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header" id="header">
+    <div class="barra"><p>Venta a negocio · Línea Genomalabs · Medicamentos de venta libre</p></div>
+    <div class="header__inner">
+      <a class="marca" href="index.html">
+        <img class="logo-completo" src="img/logo.png" alt="Medicalabs, distribución farmacéutica. Salud y bienestar, siempre más cerca." />
+        <img class="logo-icono" src="img/logo-icono.png" alt="Medicalabs" />
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Páginas">
+        <a href="a-quien.html">A quién</a>
+        <a href="surtido.html">Surtido</a>
+        <a href="promociones.html">Promos</a>
+        <a href="reparto.html">Reparto</a>
+        <a href="visita.html">Visita</a>
+        <span class="nav-sesion" id="sesionNav"></span>
+        <a href="pedido.html" class="btn btn--lime btn--sm" id="pedidoBtn">Armar pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <main class="panel" id="contenido">
+    <div id="panelNo" hidden>
+      <h1>Esta entrada es del dueño.</h1>
+      <p>Una cuenta de cliente no abre los pedidos de los demás.</p>
+      <a class="btn btn--lime" href="cuenta.html">Ir a mi cuenta</a>
+    </div>
+    <div id="panelApp" hidden>
+      <p class="kicker">Ruta</p>
+      <div class="titulo-ayuda">
+        <h1>Pedidos del negocio.</h1>
+        <button class="ayuda" id="ayudaBtn" type="button" aria-expanded="false" aria-controls="ayudaTexto">?</button>
+      </div>
+      <div class="ayuda-texto" id="ayudaTexto" hidden tabindex="-1">
+        <p>En Visitas ves quién pidió que lo contacten o agendó al prevendedor. La pasas a confirmada, hecha o cancelada.</p>
+        <p>En Pedidos ves cada solicitud y la pasas a en ruta o entregada.</p>
+        <p>En En vivo ves quién marcó un punto o dejó la ubicación encendida, con negocio, teléfono y dirección.</p>
+        <p>En Clientes ves quién se registró y qué piezas compró.</p>
+        <p>En Productos cambias el nombre, el precio, el descuento y si la pieza se ve en la página.</p>
+        <p>En Ajustes puedes mostrar u ocultar el recuadro de preguntas.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Panel">
+        <button type="button" role="tab" id="tabVisitas" aria-selected="true" aria-controls="vistaVisitas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3v18H4V4h3V2zm11 8H6v10h12V10zM8 12h3v3H8v-3z"/></svg>
+          Visitas
+        </button>
+        <button type="button" role="tab" id="tabVivo" aria-selected="false" aria-controls="vistaVivo">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/></svg>
+          En vivo
+        </button>
+        <button type="button" role="tab" id="tabPedidos" aria-selected="false" aria-controls="vistaPedidos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7h16v2H4V7zm0 4h10v2H4v-2zm0 4h16v2H4v-2z"/></svg>
+          Pedidos
+        </button>
+        <button type="button" role="tab" id="tabProductos" aria-selected="false" aria-controls="vistaProductos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/></svg>
+          Productos
+        </button>
+        <button type="button" role="tab" id="tabClientes" aria-selected="false" aria-controls="vistaClientes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm8 1a2.5 2.5 0 1 0-2.5-2.5A2.5 2.5 0 0 0 16 12zM8 13c-2.8 0-6 1.4-6 3.5V19h12v-2.5C14 14.4 10.8 13 8 13zm8 .5c-.3 0-.7 0-1 .1 1.2.8 2 1.9 2 3.1V19h5v-2c0-1.9-2.7-3.5-6-3.5z"/></svg>
+          Clientes
+        </button>
+        <button type="button" role="tab" id="tabAjustes" aria-selected="false" aria-controls="vistaAjustes">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 7h10v2H4V7zm12 0h4v2h-4V7zM4 15h6v2H4v-2zm8 0h8v2h-8v-2zM9 5h2v6H9V5zm6 8h2v6h-2v-6z"/></svg>
+          Ajustes
+        </button>
+      </div>
+      <div id="vistaVisitas" role="tabpanel"></div>
+      <div id="vistaVivo" role="tabpanel" hidden>
+        <p>Quien marca un punto o deja la ubicación encendida aparece aquí, con el negocio, el teléfono y la dirección. El punto verde se está moviendo. El azul es el último punto guardado.</p>
+        <div id="mapaVivo" class="mapa" role="application" aria-label="Mapa de ubicaciones compartidas"></div>
+        <div id="listaVivo" class="lista-cuenta"></div>
+      </div>
+      <div id="vistaPedidos" role="tabpanel" hidden></div>
+      <div id="vistaClientes" role="tabpanel" hidden></div>
+      <div id="vistaProductos" role="tabpanel" hidden>
+        <p>Lo que guardes aquí es lo que ve el negocio en el surtido y en las promociones.</p>
+        <div class="mapa-acciones">
+          <button class="btn btn--lime btn--sm" id="nuevoProducto" type="button">Agregar pieza</button>
+        </div>
+        <form id="productoForm" class="compra" hidden>
+          <h2 id="productoTitulo">Editar pieza</h2>
+          <input id="productoId" type="hidden" />
+          <div class="campo">
+            <label for="productoNombre">Nombre</label>
+            <input id="productoNombre" type="text" required />
+          </div>
+          <div class="campo-par">
+            <div class="campo">
+              <label for="productoLinea">Línea</label>
+              <input id="productoLinea" type="text" />
+            </div>
+            <div class="campo">
+              <label for="productoPresentacion">Presentación</label>
+              <input id="productoPresentacion" type="text" />
+            </div>
+          </div>
+          <div class="campo-par">
+            <div class="campo">
+              <label for="productoPrecio">Precio de lista</label>
+              <input id="productoPrecio" type="number" min="0" step="0.01" placeholder="Vacío si aún no tiene precio" />
+            </div>
+            <div class="campo">
+              <label for="productoDescuento">Descuento %</label>
+              <input id="productoDescuento" type="number" min="0" max="90" step="1" value="0" />
+            </div>
+          </div>
+          <div class="campo">
+            <label for="productoNota">Nota</label>
+            <input id="productoNota" type="text" />
+          </div>
+          <label class="check"><input id="productoActivo" type="checkbox" checked /> Visible en la página</label>
+          <p id="productoAviso" role="status"></p>
+          <div class="mapa-acciones">
+            <button class="btn btn--lime btn--sm" type="submit">Guardar</button>
+            <button class="btn btn--ghost btn--sm" id="cerrarProducto" type="button">Cerrar</button>
+          </div>
+        </form>
+        <div class="campo">
+          <label for="buscarProducto">Buscar pieza</label>
+          <input id="buscarProducto" type="search" placeholder="Nombre, línea o presentación" />
+        </div>
+        <div id="listaProductos" class="lista-cuenta"></div>
+      </div>
+      <div id="vistaAjustes" role="tabpanel" hidden>
+        <article class="compra">
+          <h2>Preguntas</h2>
+          <p>Apagado, nadie lo ve. Si lo enciendes, aparece un recuadro en la página.</p>
+          <label class="check"><input id="chatToggle" type="checkbox" /> Mostrar el recuadro de preguntas</label>
+          <p id="chatAviso" role="status"></p>
+        </article>
+        <article class="compra">
+          <h2>Promociones de ruta</h2>
+          <p>Salen del descuento de cada pieza. Se cambian en Productos.</p>
+          <ul id="listaPromos"></ul>
+        </article>
+      </div>
+      <p class="errores" id="duenoError" hidden tabindex="-1"></p>
+    </div>
+  </main>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/dueno.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

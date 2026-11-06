@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reparto | Medicalabs</title>
+  <meta name="description" content="El pedido de Medicalabs se entrega con dirección escrita o un punto en el mapa. Envío en cero arriba de 700 pesos." />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/logo-icono-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header" id="header">
+    <div class="barra"><p>Venta a negocio · Línea Genomalabs · Medicamentos de venta libre</p></div>
+    <div class="header__inner">
+      <a class="marca" href="index.html">
+        <img class="logo-completo" src="img/logo.png" alt="Medicalabs, distribución farmacéutica. Salud y bienestar, siempre más cerca." />
+        <img class="logo-icono" src="img/logo-icono.png" alt="Medicalabs" />
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Páginas">
+        <a href="a-quien.html">A quién</a>
+        <a href="surtido.html">Surtido</a>
+        <a href="promociones.html">Promos</a>
+        <a href="reparto.html" aria-current="page">Reparto</a>
+        <a href="visita.html">Visita</a>
+        <span class="nav-sesion" id="sesionNav"></span>
+        <a href="pedido.html" class="btn btn--lime btn--sm" id="pedidoBtn">Armar pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="pagina">
+      <p class="kicker">De la bodega a tu puerta</p>
+      <h1>Así llega el pedido.</h1>
+      <p class="lead">Escribes la dirección, marcas el punto en el mapa o compartes tu ubicación en tiempo real. Con una basta. Arriba de $700 el envío de esta ruta va en $0. Debajo, cobra $89.</p>
+      <div class="pagina__acciones">
+        <a class="btn btn--lime" href="pedido.html">Dejar la entrega <span class="flecha" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="bloque bloque--ruta">
+      <div class="ruta__fotos">
+        <img class="ruta__grande" src="img/bodega.jpg" alt="Pasillo de una bodega con tarimas a ambos lados" />
+        <img class="ruta__chica" src="img/reparto.jpg" alt="Repartidor con cajas junto a la camioneta" />
+      </div>
+      <div>
+        <p class="kicker">Cuatro pasos</p>
+        <h2>De la lista a la puerta del negocio.</h2>
+        <ol class="pasos">
+          <li>
+            <strong>Lo anotas</strong>
+            <span>Las piezas, el negocio y la entrega: dirección escrita, un punto en el mapa o la ubicación en tiempo real.</span>
+          </li>
+          <li>
+            <strong>Se arma</strong>
+            <span>En bodega, con empaque cerrado. No se abre la caja para completar con otra marca.</span>
+          </li>
+          <li>
+            <strong>Sale a ruta</strong>
+            <span>La caja va a la dirección o al punto que marcaste. Arriba de $700 el envío va en $0.</span>
+          </li>
+          <li>
+            <strong>Lo recibes</strong>
+            <span>Lote y caducidad a la vista, para que el anaquel no se quede con producto vencido.</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="bloque" id="preguntas">
+      <div class="bloque__cabeza">
+        <p class="kicker">Antes de pedir</p>
+        <h2>Preguntas de quien compra para revender.</h2>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>¿Surten medicamentos de receta?</summary>
+          <p>No. Medicalabs reparte medicamentos de venta libre de la línea Genomalabs.</p>
+        </details>
+        <details>
+          <summary>¿El pedido es para el público?</summary>
+          <p>No. La solicitud es del negocio: farmacia, tienda o local. La venta al público la hace el mostrador.</p>
+        </details>
+        <details>
+          <summary>¿Hay un mínimo?</summary>
+          <p>Se acuerda en el primer pedido, según la zona y lo que haya que reponer.</p>
+        </details>
+        <details>
+          <summary>¿Esto es la factura?</summary>
+          <p>No. El folio sirve para seguir la solicitud. La factura se acuerda con el negocio.</p>
+        </details>
+        <details>
+          <summary>¿Dónde entregan?</summary>
+          <p>En la dirección que escribes, en el punto que marcas o en la ubicación que dejas encendida. Con una basta. El negocio y el teléfono viajan con ese punto.</p>
+        </details>
+        <details>
+          <summary>¿El envío tiene costo?</summary>
+          <p>Arriba de 700 pesos el envío va en cero. Debajo de ese monto, el envío es de 89 pesos.</p>
+        </details>
+        <details>
+          <summary>¿Dónde veo lo que compré?</summary>
+          <p>En Mi cuenta, después de entrar. Ahí están las piezas, las cantidades, el envío y el total de cada pedido.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <p class="marca marca--clara"><span>Medicalabs</span></p>
+      <p>Distribución de medicamentos de venta libre de la línea Genomalabs a farmacias, tiendas y negocios locales.</p>
+    </div>
+    <nav class="footer__links" aria-label="Mapa del sitio">
+      <a href="index.html">Inicio</a>
+      <a href="a-quien.html">A quién surtimos</a>
+      <a href="surtido.html">Surtido</a>
+      <a href="promociones.html">Promociones</a>
+      <a href="reparto.html">Reparto</a>
+      <a href="visita.html">Visita para registrarte</a>
+      <a href="pedido.html">Armar pedido</a>
+      <a href="entrar.html">Entrar</a>
+    </nav>
+    <p class="legal">Medicalabs no fabrica los medicamentos. Genomalabs es la línea de su titular. No es una consulta médica ni sustituye la lectura del empaque. La venta al público la hace el negocio que recibe el pedido.</p>
+  </footer>
+  <script src="js/sesion.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>

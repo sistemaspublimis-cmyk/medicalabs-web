@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agenda una visita | Medicalabs</title>
+  <meta name="description" content="Para abrir la cuenta de Medicalabs agendas una visita del prevendedor o dejas tus datos para que te contacten." />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/logo-icono-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header" id="header">
+    <div class="barra"><p>Venta a negocio · Línea Genomalabs · Medicamentos de venta libre</p></div>
+    <div class="header__inner">
+      <a class="marca" href="index.html">
+        <img class="logo-completo" src="img/logo.png" alt="Medicalabs, distribución farmacéutica. Salud y bienestar, siempre más cerca." />
+        <img class="logo-icono" src="img/logo-icono.png" alt="Medicalabs" />
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Páginas">
+        <a href="a-quien.html">A quién</a>
+        <a href="surtido.html">Surtido</a>
+        <a href="promociones.html">Promos</a>
+        <a href="reparto.html">Reparto</a>
+        <a href="visita.html" aria-current="page">Visita</a>
+        <span class="nav-sesion" id="sesionNav"></span>
+        <a href="pedido.html" class="btn btn--lime btn--sm" id="pedidoBtn">Armar pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="bloque bloque--pedido">
+      <div class="pedido__lado">
+        <p class="kicker">Registro del negocio</p>
+        <h1>Contacta o agenda la visita.</h1>
+        <p>Así se abre la cuenta. El prevendedor va al negocio: no es una venta al público ni un alta sin conocer el local.</p>
+        <ol class="lado-pasos">
+          <li>Mañana, de 10 a 13. Tarde, de 15 a 18.</li>
+          <li>Lunes a sábado. Un negocio por turno.</li>
+          <li>Si pides contacto, no eliges horario. Dejas teléfono y dirección.</li>
+        </ol>
+        <p class="nota-honesta">Te confirmamos la visita. No es una llamada automática.</p>
+      </div>
+      <div class="pedido__caja">
+        <p class="ok" id="visitaOk" hidden tabindex="-1"></p>
+        <form id="visitaForm" novalidate>
+          <p class="aviso-mini" id="visitaSesion">Al enviar se abre la cuenta con el correo y la contraseña de abajo.</p>
+          <div class="modo" role="radiogroup" aria-label="Cómo quieres el registro">
+            <label><input type="radio" name="modo" value="visita" checked /> Agendar visita</label>
+            <label><input type="radio" name="modo" value="contacto" /> Que me contacten</label>
+          </div>
+          <div id="cuentaNueva">
+            <div class="campo">
+              <label for="nombre">Tu nombre</label>
+              <input id="nombre" type="text" autocomplete="name" />
+            </div>
+            <div class="campo-par">
+              <div class="campo">
+                <label for="email">Correo</label>
+                <input id="email" type="email" autocomplete="email" />
+              </div>
+              <div class="campo">
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" autocomplete="new-password" minlength="8" />
+              </div>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="negocio">Nombre del negocio</label>
+            <input id="negocio" type="text" autocomplete="organization" required />
+          </div>
+          <div class="campo-par">
+            <div class="campo">
+              <label for="tipo">Tipo de negocio</label>
+              <select id="tipo" required>
+                <option value="">Elige</option>
+                <option>Farmacia</option>
+                <option>Tienda</option>
+                <option>Negocio local</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10 dígitos" required />
+            </div>
+          </div>
+          <div id="bloqueHorario">
+            <div class="campo-par">
+              <div class="campo">
+                <label for="fecha">Día</label>
+                <input id="fecha" type="date" />
+              </div>
+              <div class="campo">
+                <label for="turno">Turno</label>
+                <select id="turno">
+                  <option value="">Elige</option>
+                  <option value="manana">Mañana · 10 a 13</option>
+                  <option value="tarde">Tarde · 15 a 18</option>
+                </select>
+              </div>
+            </div>
+            <p class="aviso-mini" id="avisoHorario" role="status"></p>
+          </div>
+          <fieldset class="entrega">
+            <legend>Dónde está el negocio</legend>
+            <p>Dirección escrita, un punto en el mapa o tu ubicación en tiempo real. Con una basta.</p>
+            <div class="campo">
+              <label for="calle">Calle y número</label>
+              <input id="calle" type="text" autocomplete="address-line1" />
+            </div>
+            <div class="campo-par">
+              <div class="campo">
+                <label for="colonia">Colonia</label>
+                <input id="colonia" type="text" autocomplete="address-level3" />
+              </div>
+              <div class="campo">
+                <label for="municipio">Municipio</label>
+                <input id="municipio" type="text" autocomplete="address-level2" />
+              </div>
+            </div>
+            <div class="campo-par">
+              <div class="campo">
+                <label for="cp">Código postal</label>
+                <input id="cp" type="text" inputmode="numeric" autocomplete="postal-code" />
+              </div>
+              <div class="campo">
+                <label for="referencia">Referencia</label>
+                <input id="referencia" type="text" />
+              </div>
+            </div>
+            <div class="mapa-buscar">
+              <div class="campo">
+                <label for="buscarMapa">Buscar en el mapa</label>
+                <input id="buscarMapa" type="search" placeholder="Calle, colonia, municipio" />
+              </div>
+              <button class="btn btn--ghost" id="irMapa" type="button">Buscar</button>
+            </div>
+            <p class="aviso-mini" id="mapaAviso">El mapa abre en el centro del país para marcar el negocio. No es una bodega de Medicalabs.</p>
+            <div id="mapa" class="mapa" role="application" aria-label="Mapa para marcar el negocio"></div>
+            <div class="mapa-acciones">
+              <button class="btn btn--ghost btn--sm" id="usarUbi" type="button">Usar mi ubicación</button>
+              <button class="btn btn--ghost btn--sm" id="vivoUbi" type="button" aria-pressed="false">Compartir en tiempo real</button>
+              <button class="btn btn--ghost btn--sm" id="compartirDatos" type="button">Compartir datos</button>
+            </div>
+            <button class="btn btn--ghost btn--sm" id="quitarPunto" type="button" hidden>Quitar punto</button>
+            <input id="lat" type="hidden" />
+            <input id="lng" type="hidden" />
+          </fieldset>
+          <div class="campo">
+            <label for="nota">Nota</label>
+            <textarea id="nota" rows="3" placeholder="Horario del negocio, quién atiende o cómo llegar."></textarea>
+          </div>
+          <ul class="errores" id="visitaError" hidden tabindex="-1"></ul>
+          <button class="btn btn--lime btn--block" type="submit">Enviar y abrir la cuenta</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <p class="marca marca--clara"><span>Medicalabs</span></p>
+      <p>Distribución de medicamentos de venta libre de la línea Genomalabs a farmacias, tiendas y negocios locales.</p>
+    </div>
+    <nav class="footer__links" aria-label="Mapa del sitio">
+      <a href="index.html">Inicio</a>
+      <a href="a-quien.html">A quién surtimos</a>
+      <a href="surtido.html">Surtido</a>
+      <a href="promociones.html">Promociones</a>
+      <a href="reparto.html">Reparto</a>
+      <a href="visita.html">Visita para registrarte</a>
+      <a href="pedido.html">Armar pedido</a>
+      <a href="entrar.html">Entrar</a>
+    </nav>
+    <p class="legal">Medicalabs no fabrica los medicamentos. Genomalabs es la línea de su titular. No es una consulta médica ni sustituye la lectura del empaque. La venta al público la hace el negocio que recibe el pedido.</p>
+  </footer>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/ubi.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/visita.js"></script>
+  <script src="js/motion.js"></script>
+</body>
+</html>

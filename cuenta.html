@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi cuenta | Medicalabs</title>
+  <meta name="description" content="Pedidos y piezas compradas en la cuenta de Medicalabs." />
+  <link rel="icon" href="img/logo-icono.png" type="image/png" />
+  <link rel="apple-touch-icon" href="img/logo-icono-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,620;1,9..144,520&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="header" id="header">
+    <div class="barra"><p>Venta a negocio · Línea Genomalabs · Medicamentos de venta libre</p></div>
+    <div class="header__inner">
+      <a class="marca" href="index.html">
+        <img class="logo-completo" src="img/logo.png" alt="Medicalabs, distribución farmacéutica. Salud y bienestar, siempre más cerca." />
+        <img class="logo-icono" src="img/logo-icono.png" alt="Medicalabs" />
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Páginas">
+        <a href="a-quien.html">A quién</a>
+        <a href="surtido.html">Surtido</a>
+        <a href="promociones.html">Promos</a>
+        <a href="reparto.html">Reparto</a>
+        <a href="visita.html">Visita</a>
+        <span class="nav-sesion" id="sesionNav"></span>
+        <a href="pedido.html" class="btn btn--lime btn--sm" id="pedidoBtn">Armar pedido <span class="flecha" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+  <main class="panel" id="contenido">
+    <p class="kicker">Tu cuenta</p>
+    <h1>Lo que este negocio ya pidió.</h1>
+    <p class="lead" id="cuentaLead">Las compras de esta cuenta. No se ven las de otro cliente.</p>
+    <article class="compra" id="cuentaUbi" hidden>
+      <h2>Ubicación para la ruta</h2>
+      <p>Marca el punto de una vez o déjalo en tiempo real. Viajan tu cuenta y, si el pedido ya trae negocio y teléfono, esos datos también.</p>
+      <p class="aviso-mini" id="mapaAviso">El mapa espera tu permiso de ubicación.</p>
+      <div id="mapa" class="mapa" role="application" aria-label="Mapa de tu ubicación"></div>
+      <div class="mapa-acciones">
+        <button class="btn btn--ghost btn--sm" id="usarUbi" type="button">Usar mi ubicación</button>
+        <button class="btn btn--ghost btn--sm" id="vivoUbi" type="button" aria-pressed="false">Compartir en tiempo real</button>
+        <button class="btn btn--ghost btn--sm" id="compartirDatos" type="button">Compartir datos</button>
+      </div>
+      <input id="lat" type="hidden" />
+      <input id="lng" type="hidden" />
+    </article>
+    <div id="cuentaVisitas" class="lista-cuenta"></div>
+    <div id="cuentaLista" class="lista-cuenta">
+      <p>Cargando los pedidos.</p>
+    </div>
+  </main>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/sesion.js"></script>
+  <script src="js/ubi.js"></script>
+  <script src="js/cuenta.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
