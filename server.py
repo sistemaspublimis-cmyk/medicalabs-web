@@ -224,6 +224,42 @@ def seed_catalog(con):
             rows,
         )
 
+CP_CACHE = {}
+
+def lookup_cp(raw):
+    cp = "".join(ch for ch in str(raw or "") if ch.isdigit())
+    if len(cp) != 5:
+        raise ValueError("El código postal tiene 5 dígitos.")
+    if cp in CP_CACHE:
+        return CP_CACHE[cp]
+    url = "https://postali.app/api/v1/mx/cp/" + cp
+    req = urllib.request.Request(url, headers={"User-Agent": "Medicalabs", "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=8) as res:
+            data = json.loads(res.read().decode())
+    except urllib.error.HTTPError as err:
+        if err.code == 404:
+            raise ValueError("No encontré ese código postal.")
+        raise ValueError("No pude consultar el código postal. Escríbelo a mano.")
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
+        raise ValueError("No pude consultar el código postal. Escríbelo a mano.")
+    lugares = []
+    for item in data.get("asentamientos") or []:
+        nombre = str(item.get("nombre") or "").strip()
+        if not nombre:
+            continue
+        lugares.append({"nombre": nombre, "tipo": str(item.get("tipo") or "Colonia").strip()})
+    out = {
+        "cp": cp,
+        "estado": str(data.get("estado") or "").strip(),
+        "municipio": str(data.get("municipio") or "").strip(),
+        "lugares": lugares,
+    }
+    if not out["municipio"] and not lugares:
+        raise ValueError("No encontré ese código postal.")
+    CP_CACHE[cp] = out
+    return out
+
 def catalog_map():
     with connect() as con:
         rows = con.execute("SELECT * FROM catalog_items").fetchall()
@@ -510,6 +546,9 @@ class App(BaseHTTPRequestHandler):
         if path == "/api/yo":
             row = self.user()
             self.send_json(200, {"user": self.public_user(row) if row else None})
+            return
+        if path.startswith("/api/cp/"):
+            self.send_json(200, lookup_cp(path[len("/api/cp/"):]))
             return
         if path == "/api/productos":
             with connect() as con:

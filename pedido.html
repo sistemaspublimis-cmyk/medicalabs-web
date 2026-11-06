@@ -102,13 +102,14 @@
             <div class="campo-par">
               <div class="campo">
                 <label for="cp">Código postal</label>
-                <input id="cp" name="cp" type="text" inputmode="numeric" autocomplete="postal-code" />
+                <input id="cp" name="cp" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" />
               </div>
               <div class="campo">
                 <label for="referencia">Referencia</label>
                 <input id="referencia" name="referencia" type="text" />
               </div>
             </div>
+            <div id="listaCp" class="lista-cp" hidden></div>
             <div class="mapa-buscar">
               <div class="campo">
                 <label for="buscarMapa">Buscar en el mapa</label>

@@ -584,6 +584,11 @@ textarea { min-height: 120px; resize: vertical; }
   isolation: isolate;
 }
 .mapa-acciones { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 0.75rem; }
+.lista-cp { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.15rem 0 0.85rem; }
+.lista-cp .aviso-mini { flex: 1 0 100%; margin: 0; }
+.lista-cp .btn { flex: 1 1 14rem; text-align: left; }
+.btn--wa { background: #128c7e; color: #fff; border-color: #128c7e; }
+.btn--wa:hover { filter: brightness(1.05); }
 .pin-crudo { background: transparent; border: 0; }
 .pin-vivo {
   display: block;

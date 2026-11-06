@@ -480,4 +480,59 @@
       ponerPin: ponerPin
     });
   }
+  prepararCp();
+
+  function prepararCp() {
+  const campo = document.querySelector("#cp");
+  const lista = document.querySelector("#listaCp");
+  if (!campo || !lista || !window.Medicalabs) return;
+  let pedido = "";
+  campo.addEventListener("input", async function () {
+    const cp = campo.value.replace(/\D/g, "").slice(0, 5);
+    if (campo.value !== cp) campo.value = cp;
+    if (cp.length !== 5) {
+      lista.hidden = true;
+      lista.innerHTML = "";
+      pedido = "";
+      return;
+    }
+    if (cp === pedido) return;
+    pedido = cp;
+    lista.hidden = false;
+    lista.innerHTML = "<p class=\"aviso-mini\">Buscando colonias de ese código postal.</p>";
+    try {
+      const data = await window.Medicalabs.api("/api/cp/" + cp);
+      if (pedido !== cp) return;
+      const lugares = data.lugares || [];
+      const donde = [data.municipio, data.estado].filter(Boolean).join(", ");
+      if (!lugares.length) {
+        lista.innerHTML = "<p class=\"aviso-mini\">No encontré colonias para ese código. Escríbela a mano.</p>";
+        return;
+      }
+      lista._lugares = lugares;
+      lista.dataset.donde = donde;
+      lista.innerHTML = "<p class=\"aviso-mini\">Municipio: " + escapeHtml(donde) + ". Elige la colonia.</p>" +
+        lugares.map(function (lugar, indice) {
+          return "<button type=\"button\" class=\"btn btn--ghost btn--sm\" data-lugar=\"" + indice + "\">" +
+            escapeHtml(lugar.tipo || "Colonia") + " · " + escapeHtml(lugar.nombre) + "</button>";
+        }).join("");
+    } catch (err) {
+      if (pedido !== cp) return;
+      lista.innerHTML = "<p class=\"aviso-mini\">" + escapeHtml(err.message || "No pude consultar el código postal.") + "</p>";
+    }
+  });
+  lista.addEventListener("click", function (event) {
+    const boton = event.target.closest("[data-lugar]");
+    if (!boton) return;
+    const lugar = (lista._lugares || [])[Number(boton.getAttribute("data-lugar"))];
+    if (!lugar) return;
+    const colonia = document.querySelector("#colonia");
+    const municipio = document.querySelector("#municipio");
+    if (colonia) colonia.value = lugar.nombre;
+    if (municipio) municipio.value = lista.dataset.donde || "";
+    lista.querySelectorAll("button").forEach(function (otro) {
+      otro.setAttribute("aria-pressed", otro === boton ? "true" : "false");
+    });
+  });
+  }
 })();

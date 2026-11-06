@@ -48,6 +48,8 @@
           <li>Lunes a sábado. Un negocio por turno.</li>
           <li>Si pides contacto, no eliges horario. Dejas teléfono y dirección.</li>
         </ol>
+        <p>También puedes registrarte por WhatsApp: mandas la ubicación del negocio al 55 7554 6627.</p>
+        <a class="btn btn--wa" href="https://wa.me/525575546627?text=Hola%2C%20quiero%20registrar%20mi%20negocio%20con%20Medicalabs.%20Enseguida%20te%20mando%20mi%20ubicaci%C3%B3n." target="_blank" rel="noopener">Enviar ubicación por WhatsApp</a>
         <p class="nota-honesta">Te confirmamos la visita. No es una llamada automática.</p>
       </div>
       <div class="pedido__caja">
@@ -130,13 +132,14 @@
             <div class="campo-par">
               <div class="campo">
                 <label for="cp">Código postal</label>
-                <input id="cp" type="text" inputmode="numeric" autocomplete="postal-code" />
+                <input id="cp" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" />
               </div>
               <div class="campo">
                 <label for="referencia">Referencia</label>
                 <input id="referencia" type="text" />
               </div>
             </div>
+            <div id="listaCp" class="lista-cp" hidden></div>
             <div class="mapa-buscar">
               <div class="campo">
                 <label for="buscarMapa">Buscar en el mapa</label>
