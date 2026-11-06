@@ -17,8 +17,7 @@ ROOT = Path(__file__).resolve().parent
 DB_PATH = ROOT / "data" / "medicalabs.sqlite"
 HOST = os.environ.get("HOST", "0.0.0.0")
 PORT = int(os.environ.get("PORT", "8214"))
-ENVIO_GRATIS_DESDE = 700.0
-ENVIO_MENOR = 89.0
+
 OWNER_EMAIL = os.environ.get("MEDICALABS_OWNER_EMAIL", "dueno@medicalabs.local")
 OWNER_PASSWORD = os.environ.get("MEDICALABS_OWNER_PASSWORD", "Medicalabs2026")
 COOKIE = "medicalabs"
@@ -281,7 +280,7 @@ def quote(lines):
         )
     if not detailed:
         raise ValueError("Suma al menos una pieza con precio.")
-    envio = 0.0 if subtotal >= ENVIO_GRATIS_DESDE else ENVIO_MENOR
+    envio = 0.0
     return detailed, subtotal, envio, money(subtotal + envio)
 
 def visita_cuando(fecha, turno):

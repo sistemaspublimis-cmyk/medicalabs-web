@@ -1,7 +1,6 @@
 (function () {
   const CART_KEY = "medicalabs-carrito";
-  const ENVIO_GRATIS = 700;
-  const ENVIO_MENOR = 89;
+
   const nav = document.querySelector("#nav");
   const toggle = document.querySelector("#navToggle");
   const header = document.querySelector("#header");
@@ -76,8 +75,7 @@
     const subtotal = money(items.reduce(function (suma, linea) {
       return suma + unitario(pieza(linea.id)) * linea.qty;
     }, 0));
-    const envio = subtotal <= 0 ? 0 : (subtotal >= ENVIO_GRATIS ? 0 : ENVIO_MENOR);
-    return { subtotal: subtotal, envio: envio, total: money(subtotal + envio) };
+    return { subtotal: subtotal, envio: 0, total: subtotal };
   }
 
   function guardarCarrito(items) {
@@ -118,10 +116,7 @@
       }).join("");
     }
     const cifras = totales(items);
-    const falta = money(Math.max(0, ENVIO_GRATIS - cifras.subtotal));
-    let mensaje = "Arriba de $700 el envío va en $0. Debajo, esta ruta cobra $89.";
-    if (cifras.subtotal > 0 && cifras.envio === 0) mensaje = "Este pedido ya tiene envío en $0.";
-    if (cifras.subtotal > 0 && cifras.envio > 0) mensaje = "Te faltan " + dinero(falta) + " para que el envío vaya en $0.";
+    const mensaje = "El envío va en $0.";
     envioMetro.innerHTML =
       "<p>" + mensaje + "</p>" +
       "<p>Piezas <strong>" + dinero(cifras.subtotal) + "</strong></p>" +
