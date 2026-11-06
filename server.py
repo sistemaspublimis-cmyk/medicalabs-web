@@ -223,6 +223,14 @@ def seed_catalog(con):
             """,
             rows,
         )
+    for item in load_product_list():
+        imagen = (item.get("imagen") or "").strip()
+        if not imagen or item.get("id") not in have:
+            continue
+        con.execute(
+            "UPDATE catalog_items SET imagen = ? WHERE id = ? AND imagen = ''",
+            (imagen, item["id"]),
+        )
 
 CP_CACHE = {}
 
